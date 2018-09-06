@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
+import Business from './components/Business';
+import CallLogs from './components/CallLogs';
+import Contacts from './components/Contacts';
+import Call from './components/Call';
 
 class App extends Component {
   render() {
     return (
+      <Router>
+        <div className="app">
+          <NavBar />
+          <Route exact path="/" component={Business} />
+          <Route exact path="/all_logs" component={CallLogs} />
+          <Route exact path="/contacts" component={Contacts} />
+          <Route exact path="/call" component={Call} />
+        </div>
+      </Router>
+
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -14,6 +30,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
+
+
     );
   }
 }
