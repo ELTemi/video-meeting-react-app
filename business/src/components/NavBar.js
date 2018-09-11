@@ -2,13 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const link = {
-  width: '100px',
-  padding: '10px',
-  margin: '10px 20px 20px 20px',
+  width: '25px',
+  padding: '12px 12px 12px 12px',
+  margin: '20px 20px 20px 20px',
   background: 'grey',
   textDecoration: 'none',
   color: 'white',
-
+  float: 'center',
+  fontSize: '20px'
 }
 
 const NavBar = () => {
