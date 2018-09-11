@@ -6,8 +6,10 @@ import TextField from 'material-ui/TextField';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 /*import accessToken from './token'*/
 
-
 export default class VideoCall extends Component {
+
+
+
  constructor(props) {
    super();
    this.state = {
@@ -18,7 +20,7 @@ export default class VideoCall extends Component {
       localMediaAvailable: false, /* Represents the availability of a LocalAudioTrack(microphone) and a LocalVideoTrack(camera) */
       hasJoinedRoom: false,
       activeRoom: null, // Track the current active room
-      token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTS2NiZTJjOGU3YzQ2MWY2OTQwMjI3YTg1Y2E2ZDVjNzM1LTE1MzY1ODc2MzgiLCJpc3MiOiJTS2NiZTJjOGU3YzQ2MWY2OTQwMjI3YTg1Y2E2ZDVjNzM1Iiwic3ViIjoiQUNmMmRhNzAxM2I4MDg2YWEzYTNkNDdjOTc4OWE4MTQ4OSIsImV4cCI6MTUzNjU5MTIzOCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoidGVtaSIsInZpZGVvIjp7InJvb20iOiJUZW1pIn19fQ.tKlhmj8PYXZIJTBFuaCf0lT2rMtYdATm7fSAH6HeXXI"};
+      token: null};
 
    this.joinRoom = this.joinRoom.bind(this);
    this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
@@ -28,13 +30,11 @@ export default class VideoCall extends Component {
 
 
  componentDidMount() {
-   /*axios.get('/token').then(results => {
-
-
+   axios.get('//localhost:3001/token').then(results => {
       const { identity, token } = results.data;
       this.setState({ identity, token });
-    });*/
-
+      console.log(this.state)
+    });
   }
 
   handleRoomNameChange(e) {
@@ -45,7 +45,7 @@ export default class VideoCall extends Component {
 
   joinRoom() {
     /*
-  Show an error message on room name text field if user tries         joining a room without providing a room name. This is enabled by setting `roomNameErr` to true
+  Show an error message on room name text field if user tries joining a room without providing a room name. This is enabled by setting `roomNameErr` to true
    */
     if (!this.state.roomName.trim()) {
       this.setState({ roomNameErr: true });
@@ -68,6 +68,8 @@ export default class VideoCall extends Component {
     Video.connect(this.state.token, connectOptions).then(this.roomJoined, error => {
      alert('Could not connect to Twilio: ' + error.message);
     });
+
+
   }
 
   attachTracks(tracks, container) {
