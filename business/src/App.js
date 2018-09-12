@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
-import CallLogs from './components/CallLogs';
-import VideoCall from './components/VideoCall';
 import Business from './components/Business';
 import ContactsContainer from './containers/ContactsContainer';
+import CallHistoryContainer from './containers/CallHistoryContainer';
+import CallContainer from './containers/CallContainer';
+
 
 
 class App extends Component {
@@ -20,9 +21,9 @@ class App extends Component {
             <div className="app">
               <NavBar />
               <Route exact path="/" component={Business} />
-              <Route exact path="/all_logs" component={CallLogs} />
+              <Route exact path="/all_logs" component={CallHistoryContainer} />
               <Route exact path="/contacts" component={ContactsContainer} />
-              <Route exact path="/call" component={VideoCall} />
+              <Route exact path="/call" component={CallContainer} />
             </div>
           </Router>
         </div>
