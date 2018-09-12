@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const CallLogs = () => {
-  return (
-    <div>
-      <h1>Call History</h1>
-    </div>
-  );
-};
+export default class CallLogs extends Component {
 
-export default CallLogs;
+  render() {
+
+    const allVideoLogs = this.props.rooms.map((room, index) => {
+      return <li key={index}>{room.room_id}: {room.date_of_call}: {room.status}: {room.call_duration}mins </li>
+    });
+
+    return (
+      <div>{allVideoLogs}</div>
+     );
+   }
+}
+
+  /*axios.get('//localhost:3001/rooms').then(results => {
+    const { rooms } = results.data;
+    this.setState({ rooms });
+  });*/

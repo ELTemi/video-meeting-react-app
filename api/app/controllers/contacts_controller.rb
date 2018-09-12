@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
 
   def index
     contacts = Contact.all
-    render json: contacts    
+    render json: contacts
   end
 
   def create
@@ -10,7 +10,6 @@ class ContactsController < ApplicationController
     if contact.save
       render json: contact
     end
-    binding.pry
   end
 
   private

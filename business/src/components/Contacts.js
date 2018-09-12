@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Contacts = () => {
-  return (
-    <div>
-      <h1>All Contacts</h1>
-    </div>
-  );
-};
+export default class Contacts extends Component {
 
-export default Contacts;
+  render() {
+
+    const allContacts = this.props.contacts.map((contact, index) => {
+      return <li key={index}>{contact.name}: {contact.phone_number}</li>
+    });
+
+    return (
+      <div>{allContacts}</div>
+     );
+   }
+}

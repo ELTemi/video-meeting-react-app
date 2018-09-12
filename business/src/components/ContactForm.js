@@ -25,15 +25,21 @@ class ContactForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const target = event.target
-    const name = target.name
-    this.props.addContact(this.state)
-    this.setState({
-      [name] : ''
-    })
+
+    fetch('//localhost:3001/contacts', {
+        method: 'POST',
+        body: JSON.stringify({contact: {name: this.state.name, phone_number: this.state.phoneNumber}}),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
   }
 
 
   render() {
+
+    let showContact = this.state.name ? (<p>{this.state.name} : {this.state.phoneNumber}</p>) : ''
     return(
       <div className="container">
         <form onSubmit={(event) => this.handleSubmit(event)}>
@@ -47,6 +53,10 @@ class ContactForm extends Component {
             <div className="col-75">
               <input name="phoneNumber" type="text" placeholder="Contact Phone number..."onChange={(event) => this.handlePhoneChange(event)} value={this.state.phoneNumber} />
             </div>
+          </div>
+
+          <div>
+            {showContact}
           </div>
           <div className="row col-25">
             <input type="submit" value="Submit"/>

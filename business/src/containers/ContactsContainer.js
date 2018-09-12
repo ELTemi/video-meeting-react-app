@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ContactForm from '../components/ContactForm';
 import Contacts from '../components/Contacts';
+import { fetchContacts } from '../actions/contacts'
 import { connect } from 'react-redux';
+
+
 
 class ContactsContainer extends Component {
   render() {
@@ -12,15 +15,23 @@ class ContactsContainer extends Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    this.props.fetchContacts()
+  }
 }
 
+const mapStateToProps = ({contacts: { contacts }}) => {
+  return ({contacts})
+}
 
 const mapDispatchToProps = dispatch => {
   return {
-    addContact: (contact) => {
-      dispatch({type: "ADD_CONTACT", contact})
-    }
+    fetchContacts: () => {
+      return dispatch(fetchContacts())
+    },
   };
 };
 
-export default connect(({ contacts }) => ({ contacts }), mapDispatchToProps)(ContactsContainer)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactsContainer);

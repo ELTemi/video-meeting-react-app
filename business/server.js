@@ -1,4 +1,4 @@
-require("dotenv").config();
+/*require("dotenv").config();
 var path = require("path");
 var express = require("express");
 var webpack = require("webpack");
@@ -8,7 +8,6 @@ var VideoGrant = AccessToken.VideoGrant;
 var accountSid = 'ACf2da7013b8086aa3a3d47c9789a81489'
 var authToken = 'f45f5fb91319427c9f957aca6f9b8839'
 var client = require('twilio')(accountSid, authToken);
-//console.log(require('twilio')(accountSid, authToken))
 
 var app = express();
 app.use(function(req, res, next) {
@@ -16,6 +15,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
 if(process.env.NODE_ENV === "DEV") { // Configuration for development environment
     var webpackDevMiddleware = require("webpack-dev-middleware");
     var webpackHotMiddleware = require("webpack-hot-middleware");
@@ -56,16 +56,17 @@ app.get('/token', function(request, response) {
 });
 
 app.get('/rooms', function(request, response) {
-  client.video.rooms.each({
+  client.video.rooms.list({
                      status: 'completed'
-                   },
-                      rooms => response.send({
-                        rooms: rooms
-                   }));
+                   }).then((value)=>{
+                      response.send({
+                        rooms: value
+                      })
+                    })
 });
 
 var port = process.env.PORT || 3001;
-app.listen(port, function() {
+app.listen(port, () => {
     console.log("Express server listening on *:" + port);
 });
 
