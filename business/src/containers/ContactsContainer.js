@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContactForm from '../components/ContactForm';
+import ContactForm from './ContactForm';
 import Contacts from '../components/Contacts';
 import { fetchContacts } from '../actions/contacts'
 import { connect } from 'react-redux';
