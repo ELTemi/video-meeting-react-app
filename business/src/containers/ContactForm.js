@@ -24,16 +24,15 @@ class ContactForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const target = event.target
 
     fetch('//localhost:3001/contacts', {
-        method: 'POST',
-        body: JSON.stringify({contact: {name: this.state.name, phone_number: this.state.phoneNumber}}),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
+      method: 'POST',
+      body: JSON.stringify({contact: {name: this.state.name, phone_number: this.state.phoneNumber}}),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
   }
 
 
@@ -68,4 +67,4 @@ class ContactForm extends Component {
 }
 
 
-export default ContactForm
+export default ContactForm;
