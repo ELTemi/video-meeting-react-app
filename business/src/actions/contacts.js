@@ -30,4 +30,14 @@ export function addContacts(formData) {
   }
 }
 
+export function deleteContact(formData) {
+  return(dispatch) => {
+    dispatch({type: 'DELETING_CONTACT'});
+    return fetch('//localhost:3001/contacts/' + formData.id, {
+      method: 'DELETE',
+  }).then(response => {
+        return dispatch({type: 'DELETE_CONTACT', payload: formData.id})
+      })
+  }
+}
 export default fetchContacts;
