@@ -17,6 +17,7 @@ class ContactForm extends Component {
   };
 
   handlePhoneChange(event) {
+    console.log(event.target.name)
     this.setState({
       phoneNumber: event.target.value
     });
@@ -24,7 +25,6 @@ class ContactForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
     fetch('//localhost:3001/contacts', {
       method: 'POST',
       body: JSON.stringify({contact: {name: this.state.name, phone_number: this.state.phoneNumber}}),
