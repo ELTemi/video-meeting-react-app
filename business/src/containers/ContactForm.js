@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { addContacts } from '../actions/contacts'
+import { connect } from 'react-redux';
+
 
 class ContactForm extends Component {
 
@@ -25,14 +28,9 @@ class ContactForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch('//localhost:3001/contacts', {
-      method: 'POST',
-      body: JSON.stringify({contact: {name: this.state.name, phone_number: this.state.phoneNumber}}),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
+    console.log(this.state)
+    this.props.addContacts(this.state)
+    
   }
 
 
@@ -66,5 +64,14 @@ class ContactForm extends Component {
   }
 }
 
+/*const mapDispatchToProps = dispatch => {
+  return {
+    addContacts: () => {
+      //let action =
+      return dispatch(addContacts())
+    },
+  };
+};*/
 
-export default ContactForm;
+
+export default connect(null, {addContacts})(ContactForm)
