@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class Business extends Component {
 
   render() {
-    console.log(this.props.contacts.length)
     return (
       <div>
         <h2><button>All Contacts - {this.props.contacts.length}</button></h2>
