@@ -18,7 +18,8 @@ export default class VideoCallContainer extends Component {
       localMediaAvailable: false, /* Represents the availability of a LocalAudioTrack(microphone) and a LocalVideoTrack(camera) */
       hasJoinedRoom: false,
       activeRoom: null, // Track the current active room
-      token: null};
+      token: null
+    };
 
    this.joinRoom = this.joinRoom.bind(this);
    this.handleRoomNameChange = this.handleRoomNameChange.bind(this);
@@ -87,7 +88,6 @@ export default class VideoCallContainer extends Component {
   }
 
   roomJoined = (room) => {
-    // Called when a participant joins a room
     console.log("Joined as '" + this.state.identity + "'");
     this.setState({
       activeRoom: room,
