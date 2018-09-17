@@ -38,9 +38,8 @@ class Contacts extends Component {
 
 
   render() {
-
     const allContacts = this.props.contacts.map((contact, index) =>
-      <ContactCard key={index} contact={contact}/>
+      <ContactCard deleteContact={this.props.deleteContact} key={index} contact={contact}/>
     );
 
     const { classes } = this.props;
@@ -54,6 +53,7 @@ class Contacts extends Component {
             <TableRow>
               <CustomTableCell>Name</CustomTableCell>
               <CustomTableCell>Phone Number</CustomTableCell>
+              <CustomTableCell>Actions</CustomTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
