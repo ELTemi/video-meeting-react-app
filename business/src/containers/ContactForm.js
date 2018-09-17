@@ -28,9 +28,8 @@ class ContactForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state)
     this.props.addContacts(this.state)
-    
+
   }
 
 
