@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
 
   def create
     contact = Contact.new(contact_params)
+    binding.pry
     if contact.save
       render json: contact
     end
