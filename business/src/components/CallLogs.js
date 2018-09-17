@@ -6,6 +6,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import { withStyles } from '@material-ui/core/styles';
+
+const CustomTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
 
 export default class CallLogs extends Component {
 
@@ -26,10 +38,10 @@ export default class CallLogs extends Component {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Meeting Id</TableCell>
-            <TableCell>Date of Call</TableCell>
-            <TableCell>Meeting Status</TableCell>
-            <TableCell>Call Duration</TableCell>
+            <CustomTableCell>Meeting Id</CustomTableCell>
+            <CustomTableCell>Date of Call</CustomTableCell>
+            <CustomTableCell>Meeting Status</CustomTableCell>
+            <CustomTableCell>Call Duration</CustomTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
