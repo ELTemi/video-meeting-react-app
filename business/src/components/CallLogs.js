@@ -4,6 +4,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 export default class CallLogs extends Component {
 
@@ -13,7 +15,7 @@ export default class CallLogs extends Component {
       return (
         <TableRow key={index}>
           <TableCell>{room.room_id}</TableCell>
-          <TableCell>{room.date_of_call}</TableCell>
+          <TableCell><Moment>{room.date_of_call}</Moment></TableCell>
           <TableCell>{room.status}</TableCell>
           <TableCell>{room.call_duration}seconds</TableCell>
         </TableRow>
