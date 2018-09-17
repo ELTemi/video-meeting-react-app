@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import ContactForm from './ContactForm';
 import Contacts from '../components/Contacts';
-import { fetchContacts } from '../actions/contacts'
+import { fetchContacts, deleteContact } from '../actions/contacts'
 import { connect } from 'react-redux';
 
 
 
 class ContactsContainer extends Component {
   componentDidMount() {
-  this.props.fetchContacts()
-}
+    this.props.fetchContacts()
+  }
 
   render() {
     return(
@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch => {
       return dispatch(fetchContacts())
     },
 
-    deleteContact: (contact) => dispatch({type: 'DELETE_CONTACT', payload: contact })
+    deleteContact: (contact) => dispatch(deleteContact(contact))
   };
 };
 
