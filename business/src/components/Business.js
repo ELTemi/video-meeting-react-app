@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 class Business extends Component {
 
-
   render() {
+    console.log(this.props.contacts.length)
     return (
       <div>
-        <h2>Active Meetings</h2>
-        <h2>Contacts</h2>
-        <h2>Completed Meetings</h2>
+        <h2><button>All Contacts - {this.props.contacts.length}</button></h2>
+        <h2><button>All Meetings - {this.props.rooms.length}</button></h2>
       </div>
     );
   }
 };
 
-export default Business;
+const mapStateToProps = ({contacts: { contacts }, rooms: {rooms}}) => {
+  return ({contacts, rooms})
+}
 
-/*axios.get('//localhost:3001/rooms').then(results => {
-console.log(results)
-});*/
+export default connect(mapStateToProps)(Business);

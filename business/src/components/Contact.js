@@ -3,8 +3,7 @@ import React from 'react';
 
 const ContactCard = ({contact}) =>
   <div>
-    Name: {contact.name}
-    Phone Number: {contact.phone_number}
+    <h2>{contact.name} : {contact.phone_number}</h2>
   </div>
 
 export default ContactCard;
