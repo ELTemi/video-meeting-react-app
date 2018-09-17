@@ -7,22 +7,22 @@ import { connect } from 'react-redux';
 
 
 class ContactsContainer extends Component {
+  componentDidMount() {
+  this.props.fetchContacts()
+}
+
   render() {
     return(
       <div>
-        <ContactForm addContact={this.props.addContact}/>
-        <Contacts contacts={this.props.contacts} />
+        <ContactForm />
+        <Contacts contacts={this.props.contacts} deleteContact={this.props.deleteContact}/>
       </div>
     )
-  }
-
-  componentDidMount() {
-    this.props.fetchContacts()
   }
 }
 
 const mapStateToProps = ({contacts: { contacts }}) => {
-  return ({contacts})
+  return {contacts}
 }
 
 const mapDispatchToProps = dispatch => {
@@ -30,6 +30,8 @@ const mapDispatchToProps = dispatch => {
     fetchContacts: () => {
       return dispatch(fetchContacts())
     },
+
+    deleteContact: (contact) => dispatch({type: 'DELETE_CONTACT', payload: contact })
   };
 };
 
