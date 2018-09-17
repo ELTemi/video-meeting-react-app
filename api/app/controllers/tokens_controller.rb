@@ -38,5 +38,4 @@ class TokensController < ApplicationController
     end
     render json: {rooms: rooms_list}
   end
-
 end
