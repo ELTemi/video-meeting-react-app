@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CallCard from './CallCard';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -24,14 +25,7 @@ export default class CallLogs extends Component {
   render() {
     console.log(this.props.rooms)
     const allVideoLogs = this.props.rooms.map((room, index) => {
-      return (
-        <TableRow key={index}>
-          <TableCell>{room.room_id}</TableCell>
-          <TableCell><Moment>{room.date_of_call}</Moment></TableCell>
-          <TableCell>{room.status}</TableCell>
-          <TableCell>{room.call_duration}seconds</TableCell>
-        </TableRow>
-      )
+        <CallCard key={index} room={room}/>
     });
 
     return (
