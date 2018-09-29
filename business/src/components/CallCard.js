@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import RaisedButton from 'material-ui/RaisedButton';
-import { withStyles } from '@material-ui/core/styles';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-
-
-const CustomRaisedButton = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(RaisedButton);
 
 
 class CallCard extends Component {
