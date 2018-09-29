@@ -16,10 +16,12 @@ const CustomRaisedButton = withStyles(theme => ({
 }))(RaisedButton);
 
 
+
+
 class ContactCard extends Component {
+  
   render(){
     const { contact } = this.props;
-
     return (
       <TableRow>
         <TableCell>{contact.name}</TableCell>
