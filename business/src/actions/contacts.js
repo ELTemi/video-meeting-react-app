@@ -14,7 +14,7 @@ export function addContacts(formData) {
   return(dispatch) => {
     dispatch({type: 'POSTING_CONTACTS'});
     console.log(formData)
-    return fetch('//dry-garden-17503.herokuapp.com/contacts', {
+    return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts', {
       method: 'POST',
       body: JSON.stringify({contact: {name: formData.name, phone_number: formData.phoneNumber}}),
       headers: {
@@ -33,7 +33,7 @@ export function addContacts(formData) {
 export function deleteContact(formData) {
   return(dispatch) => {
     dispatch({type: 'DELETING_CONTACT'});
-    return fetch('//localhost:3001/api/v1/contacts/' + formData.id, {
+    return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts/' + formData.id, {
       method: 'DELETE',
   }).then(response => {
         return dispatch({type: 'DELETE_CONTACT', payload: formData.id})
