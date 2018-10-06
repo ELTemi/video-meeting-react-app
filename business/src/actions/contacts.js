@@ -1,7 +1,7 @@
 export function fetchContacts() {
   return (dispatch) => {
     dispatch({type: 'LOADING_CONTACTS'});
-    return fetch('//localhost:3001/api/v1/contacts')
+    return fetch('//ldry-garden-17503.herokuapp.com/api/v1/contacts')
       .then(response => {
         return response.json()
       }).then(responseJSON => {
