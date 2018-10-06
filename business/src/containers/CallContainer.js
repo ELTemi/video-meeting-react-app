@@ -112,16 +112,16 @@ render() {
      <div className="flex-item"><div ref="localMedia" /> </div>) : '';
 
    let joinOrLeaveRoomButton = this.state.hasJoinedRoom ? (
-   <RaisedButton label="Leave Room" secondary={true} onClick={this.leaveRoom}  />) : (
-   <RaisedButton label="Join Room" primary={true} onClick={this.joinRoom} />);
+   <RaisedButton label="Leave Meeting" secondary={true} onClick={this.leaveRoom}  />) : (
+   <RaisedButton label="Join Meeting" primary={true} onClick={this.joinRoom} />);
 
    return (
      <Card>
       <CardText>
         <div className="flex-container">
           {showLocalTrack}
-         <TextField hintText="Room Name" onChange={this.handleRoomNameChange}
-            errorText = {this.state.roomNameErr ? 'Room Name is required' : undefined}
+         <TextField hintText="Meeting Name" onChange={this.handleRoomNameChange}
+            errorText = {this.state.roomNameErr ? 'Meeting Name is required' : undefined}
           /><br />
           {joinOrLeaveRoomButton}  {/* Show either ‘Leave Room’ or ‘Join Room’ button */}
           </div>
