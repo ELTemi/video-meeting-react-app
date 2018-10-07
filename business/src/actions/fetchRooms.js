@@ -1,7 +1,7 @@
 export function fetchRooms() {
   return (dispatch) => {
     dispatch({type: 'LOADING_ROOMS'});
-    return fetch('//localhost:3001/rooms')
+    return fetch('//dry-garden-17503.herokuapp.com/rooms')
       .then(response => {
         return response.json()
       }).then(responseJSON => {
