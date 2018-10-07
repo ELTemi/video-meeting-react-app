@@ -17,6 +17,7 @@ export function addContacts(formData) {
     return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts', {
       method: 'POST',
       body: JSON.stringify({contact: {name: formData.name, phone_number: formData.phoneNumber}}),
+      mode: 'no-cors',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
