@@ -29,6 +29,7 @@ export default class CallLogs extends Component {
         <TableHead>
           <TableRow>
             <CustomTableCell>Meeting Id</CustomTableCell>
+            <CustomTableCell>Meeting Name</CustomTableCell>
             <CustomTableCell>Date of Call</CustomTableCell>
             <CustomTableCell>Meeting Status</CustomTableCell>
             <CustomTableCell>Call Duration</CustomTableCell>

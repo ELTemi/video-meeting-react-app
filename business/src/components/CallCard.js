@@ -14,6 +14,7 @@ class CallCard extends Component {
 
       <TableRow>
         <TableCell>{room.room_id}</TableCell>
+        <TableCell>{room.name}</TableCell>
         <TableCell><Moment>{room.date_of_call}</Moment></TableCell>
         <TableCell>{room.status}</TableCell>
         <TableCell>{room.call_duration}seconds</TableCell>
