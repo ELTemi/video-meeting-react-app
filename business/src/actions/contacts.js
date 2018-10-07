@@ -1,7 +1,9 @@
+var uri = process.env.NODE_ENV === 'production' ? '//dry-garden-17503.herokuapp.com/api/v1/contacts' : '//localhost:3001/api/v1/contacts'
+
 export function fetchContacts() {
   return (dispatch) => {
     dispatch({type: 'LOADING_CONTACTS'});
-    return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts')
+    return fetch(uri)
       .then(response => {
         return response.json()
       }).then(responseJSON => {
@@ -14,7 +16,7 @@ export function addContacts(formData) {
   return(dispatch) => {
     dispatch({type: 'POSTING_CONTACTS'});
     console.log(formData)
-    return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts', {
+    return fetch(uri, {
       method: 'POST',
       body: JSON.stringify({contact: {name: formData.name, phone_number: formData.phoneNumber}}),
       mode: 'no-cors',
@@ -26,6 +28,7 @@ export function addContacts(formData) {
     .then(response => {
         return response.json()
       }).then(responseJSON => {
+        console.log(responseJSON)
         return dispatch({type: 'ADD_CONTACT', payload: responseJSON});
       })
   }
@@ -34,7 +37,7 @@ export function addContacts(formData) {
 export function deleteContact(formData) {
   return(dispatch) => {
     dispatch({type: 'DELETING_CONTACT'});
-    return fetch('//dry-garden-17503.herokuapp.com/api/v1/contacts/' + formData.id, {
+    return fetch(uri + '/' + formData.id, {
       method: 'DELETE',
   }).then(response => {
         return dispatch({type: 'DELETE_CONTACT', payload: formData.id})
