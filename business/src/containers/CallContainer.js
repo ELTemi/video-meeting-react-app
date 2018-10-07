@@ -7,7 +7,6 @@ import { Card, CardText } from 'material-ui/Card';
 export default class VideoCallContainer extends Component {
 
 
-
  constructor(props) {
    super();
    this.state = {
@@ -30,8 +29,10 @@ export default class VideoCallContainer extends Component {
 
 
  componentDidMount() {
+   var uri = process.env.NODE_ENV === 'production' ? '//dry-garden-17503.herokuapp.com/tokens' : '//localhost:3001/tokens'
 
-  fetch('//localhost:3001/tokens')
+
+  fetch(uri)
     .then(response => response.json())
     .then(results => {
       console.log(results)
