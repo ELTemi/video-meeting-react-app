@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { addMeetingName } from '../actions/fetchRooms'
+import { connect } from 'react-redux';
 import Video from 'twilio-video';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Card, CardText } from 'material-ui/Card';
 
-export default class VideoCallContainer extends Component {
+class VideoCallContainer extends Component {
 
 
  constructor(props) {
@@ -29,8 +31,7 @@ export default class VideoCallContainer extends Component {
 
 
  componentDidMount() {
-   var uri = process.env.NODE_ENV === 'production' ? '//dry-garden-17503.herokuapp.com/tokens' : '//localhost:3001/tokens'
-
+  var uri = process.env.NODE_ENV === 'production' ? '//dry-garden-17503.herokuapp.com/tokens' : '//localhost:3001/tokens'
 
   fetch(uri)
     .then(response => response.json())
@@ -47,7 +48,11 @@ export default class VideoCallContainer extends Component {
     this.setState({ roomName });
   }
 
-  joinRoom = () => {
+  joinRoom(event) {
+    event.preventDefault();
+    this.props.addMeetingName(this.state)
+    console.log(this.state)
+
     /*
   Show an error message on room name text field if user tries joining a room without providing a room name. This is enabled by setting `roomNameErr` to true
    */
@@ -55,11 +60,10 @@ export default class VideoCallContainer extends Component {
       this.setState({ roomNameErr: true });
       return;
     }
-
     console.log("Joining room '" + this.state.roomName + "'...");
     console.log(this.state)
     let connectOptions = {
-    name: this.state.roomName
+      name: this.state.roomName
     };
 
     if (this.state.previewTracks) {
@@ -73,8 +77,6 @@ export default class VideoCallContainer extends Component {
       .then(this.roomJoined, error => {
         alert('Could not connect to Twilio: ' + error.message);
     });
-
-
   }
 
   attachTracks = (tracks, container) => {
@@ -114,7 +116,7 @@ render() {
 
    let joinOrLeaveRoomButton = this.state.hasJoinedRoom ? (
    <RaisedButton label="Leave Meeting" secondary={true} onClick={this.leaveRoom}  />) : (
-   <RaisedButton label="Join Meeting" primary={true} onClick={this.joinRoom} />);
+   <RaisedButton label="Join Meeting" primary={true} onClick={(event) => this.joinRoom(event)}/>);
 
    return (
      <Card>
@@ -133,3 +135,5 @@ render() {
  }
 
 }
+
+export default connect(null, {addMeetingName})(VideoCallContainer)
