@@ -4,11 +4,12 @@ Rails.application.routes.draw do
 
   get 'token' => "tokens#get_token"
 
+
   get 'rooms' => "tokens#get_rooms"
 
   namespace :api do
     namespace :v1 do
-      resources :videos
+      resources :meetings
       resources :contacts
     end
   end
