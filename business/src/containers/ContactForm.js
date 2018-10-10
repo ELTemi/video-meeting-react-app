@@ -29,7 +29,6 @@ class ContactForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addContacts(this.state)
-
   }
 
 
