@@ -2,6 +2,7 @@
 class TokensController < ApplicationController
 
   def get_token
+
     token = Twilio::JWT::AccessToken.new(ENV['ACCOUNT_SID'], ENV['API_KEY_SID'], ENV['API_KEY_SECRET'],
         [], ttl: 3600, identity: 'remy')
   end
