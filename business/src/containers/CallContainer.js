@@ -43,7 +43,6 @@ class VideoCallContainer extends Component {
   }
 
   handleRoomNameChange(e) {
-   /* Fetch room name from text field and update state */
     let roomName = e.target.value;
     this.setState({ roomName });
   }
@@ -51,11 +50,6 @@ class VideoCallContainer extends Component {
   joinRoom(event) {
     event.preventDefault();
     this.props.addMeetingName(this.state)
-    console.log(this.state)
-
-    /*
-  Show an error message on room name text field if user tries joining a room without providing a room name. This is enabled by setting `roomNameErr` to true
-   */
     if (!this.state.roomName.trim()) {
       this.setState({ roomNameErr: true });
       return;
@@ -126,8 +120,8 @@ render() {
          <TextField hintText="Meeting Name" onChange={this.handleRoomNameChange}
             errorText = {this.state.roomNameErr ? 'Meeting Name is required' : undefined}
           /><br />
-          {joinOrLeaveRoomButton}  {/* Show either ‘Leave Room’ or ‘Join Room’ button */}
-          </div>
+          {joinOrLeaveRoomButton}
+        </div>
         <div className="flex-item" ref="remoteMedia" id="remote-media" />
       </CardText>
      </Card>

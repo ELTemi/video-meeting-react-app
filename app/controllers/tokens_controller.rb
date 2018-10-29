@@ -22,7 +22,7 @@ class TokensController < ApplicationController
 
   def get_rooms
     account_sid = ENV['ACCOUNT_SID']
-    auth_token = 'f45f5fb91319427c9f957aca6f9b8839'
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
     rooms = @client.video.rooms.list(status: 'completed')
