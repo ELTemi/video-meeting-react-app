@@ -1,4 +1,4 @@
-module Api::V1
+=begin module Api::V1
   class MeetingsController < ApplicationController
 
     def index
@@ -22,3 +22,4 @@ module Api::V1
   end
 
 end
+=end
