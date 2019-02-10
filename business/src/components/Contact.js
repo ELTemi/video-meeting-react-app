@@ -19,7 +19,7 @@ const CustomRaisedButton = withStyles(theme => ({
 
 
 class ContactCard extends Component {
-  
+
   render(){
     const { contact } = this.props;
     return (
@@ -30,7 +30,6 @@ class ContactCard extends Component {
       </TableRow>
     )
   }
-
 
 }
 

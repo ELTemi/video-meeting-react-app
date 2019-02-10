@@ -20,7 +20,6 @@ class ContactForm extends Component {
   };
 
   handlePhoneChange(event) {
-    console.log(event.target.name)
     this.setState({
       phoneNumber: event.target.value
     });
@@ -61,15 +60,5 @@ class ContactForm extends Component {
     )
   }
 }
-
-/*const mapDispatchToProps = dispatch => {
-  return {
-    addContacts: () => {
-      //let action =
-      return dispatch(addContacts())
-    },
-  };
-};*/
-
 
 export default connect(null, {addContacts})(ContactForm)

@@ -24,7 +24,6 @@ const mapStateToProps = ({rooms: { rooms }}) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchRooms: () => {
-      //let action =
       return dispatch(fetchRooms())
     },
   };

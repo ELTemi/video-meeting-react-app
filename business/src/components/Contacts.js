@@ -43,8 +43,7 @@ class Contacts extends Component {
     );
 
     const { classes } = this.props;
-
-
+    
     return (
       <div>
       <Paper className={classes.root}>

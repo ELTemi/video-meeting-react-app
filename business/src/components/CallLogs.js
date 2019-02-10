@@ -21,8 +21,6 @@ const CustomTableCell = withStyles(theme => ({
 export default class CallLogs extends Component {
 
   render() {
-    console.log(this.props.rooms)
-
     const allVideoLogs = this.props.rooms.map((room, index) => <CallCard key={index} room={room}/>);
 
     return (
@@ -43,8 +41,3 @@ export default class CallLogs extends Component {
      );
    }
 }
-
-  /*axios.get('//localhost:3001/rooms').then(results => {
-    const { rooms } = results.data;
-    this.setState({ rooms });
-  });*/

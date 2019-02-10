@@ -36,7 +36,6 @@ class VideoCallContainer extends Component {
   fetch(uri)
     .then(response => response.json())
     .then(results => {
-      console.log(results)
         const { identity, token } = results;
         this.setState({ identity, token });
       });
@@ -54,8 +53,6 @@ class VideoCallContainer extends Component {
       this.setState({ roomNameErr: true });
       return;
     }
-    console.log("Joining room '" + this.state.roomName + "'...");
-    console.log(this.state)
     let connectOptions = {
       name: this.state.roomName
     };
@@ -85,7 +82,6 @@ class VideoCallContainer extends Component {
   }
 
   roomJoined = (room) => {
-    console.log("Joined as '" + this.state.identity + "'");
     this.setState({
       activeRoom: room,
       localMediaAvailable: true,

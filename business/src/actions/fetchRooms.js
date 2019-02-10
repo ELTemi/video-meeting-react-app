@@ -6,7 +6,6 @@ export function fetchRooms() {
       .then(response => {
         return response.json()
       }).then(responseJSON => {
-        console.log(responseJSON)
         return dispatch({type: 'FETCH_ROOMS', payload: responseJSON})
       })
   }
@@ -28,7 +27,6 @@ export function addMeetingName(formData) {
     .then(response => {
         return response.json()
       }).then(responseJSON => {
-        console.log(responseJSON)
         return dispatch({type: 'ADD_MEETING_NAME', payload: responseJSON});
       })
   }

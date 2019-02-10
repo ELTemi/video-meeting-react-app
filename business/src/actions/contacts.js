@@ -15,7 +15,6 @@ export function fetchContacts() {
 export function addContacts(formData) {
   return(dispatch) => {
     dispatch({type: 'POSTING_CONTACTS'});
-    console.log(formData)
     return fetch(uri, {
       method: 'POST',
       body: JSON.stringify({contact: {name: formData.name, phone_number: formData.phoneNumber}}),
@@ -27,7 +26,6 @@ export function addContacts(formData) {
     .then(response => {
         return response.json()
       }).then(responseJSON => {
-        console.log(responseJSON)
         return dispatch({type: 'ADD_CONTACT', payload: responseJSON});
       })
   }
