@@ -6,6 +6,7 @@ export function fetchRooms() {
       .then(response => {
         return response.json()
       }).then(responseJSON => {
+        console.log(responseJSON)
         return dispatch({type: 'FETCH_ROOMS', payload: responseJSON})
       })
   }

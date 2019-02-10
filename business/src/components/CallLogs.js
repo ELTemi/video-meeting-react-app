@@ -22,6 +22,7 @@ export default class CallLogs extends Component {
 
   render() {
     console.log(this.props.rooms)
+
     const allVideoLogs = this.props.rooms.map((room, index) => <CallCard key={index} room={room}/>);
 
     return (
